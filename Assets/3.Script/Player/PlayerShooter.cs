@@ -27,16 +27,12 @@ public class PlayerShooter : MonoBehaviour
         
         // INput 입력 시
         if (input.isFire)
-        {
             gun.Fire();
-        }
         else if (input.isReload)
-        {
             if (gun.Reload())
-            {
                 animator.SetTrigger("Reload");
-            }
-        }
+        // UI Update
+        UIManager.instance.Update_AmmoText(gun.MagAmmo, gun.ammoRemain);
     }
     private void OnAnimatorIK(int layerIndex)
     {
@@ -56,6 +52,5 @@ public class PlayerShooter : MonoBehaviour
 
         animator.SetIKPosition(AvatarIKGoal.RightHand, RightHand_Mount.position);
         animator.SetIKRotation(AvatarIKGoal.RightHand, RightHand_Mount.rotation);
-
     }
 }

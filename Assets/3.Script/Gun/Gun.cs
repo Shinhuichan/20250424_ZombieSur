@@ -55,19 +55,22 @@ public class Gun : MonoBehaviour
     }
     private void OnEnable()
     {
+        // 현재 총의 여분 탄약 데이터와 현재 총의 탄창 크기의 데이터를 가져옴
         ammoRemain = gunData.startAmmoRemain;
         MagAmmo = gunData.MAGCapacity;
 
+        // 총의 초기 상태를 Ready(발사 준비 완료)로 설정
         state = State.Ready;
 
         lastFireTime = 0;
     }
 
+    #region Shooting
     public void Fire()
     {
-        // Player의 현재 총 상태가 준비 상태이면서
-        // 마지막 발사 시간이 현재 시간보다 작을 때 발사 가능
-        if (state.Equals(State.Ready) && Time.time >= lastFireTime + gunData.timeBetFire)
+        if (state.Equals(State.Ready) // Player의 현재 총 상태가 Ready(발사 준비 완료)인 경우
+            && // 그리고
+        Time.time >= lastFireTime + gunData.timeBetFire) // 마지막 발사 시간이 현재 시간보다 작을 경우
         {
             lastFireTime = Time.time;
             // 발사
@@ -84,15 +87,11 @@ public class Gun : MonoBehaviour
         {
             // 총에 맞은 경우
             // 우리가 만든 Interface를 가지고 와서
-            // 맞은 오브젝트한테 데미질흘 줘야함...
+            // 맞은 오브젝트한테 데미지를 줘야함...
 
-            // 특정 컴포넌트가 있던없던 가지고오려고 시도(없으면 NUll)
-            IDamage target = 
-                hit.collider.GetComponent<IDamage>();
-            if (target != null)
-            {
-                target.OnDamage(gunData.damage, hit.point, hit.normal);
-            }
+            // 특정 컴포넌트가 있던없던 가져오려고 시도(없으면 NUll)
+            IDamage target = hit.collider.GetComponent<IDamage>();
+            if (target != null) target.OnDamage(gunData.damage, hit.point, hit.normal);
 
             // // 특정 컴포넌트가 있을 때만 조건문의 내부를 실행(없으면 Continue)
             // if (hit.collider.TryGetComponent(out IDamage d))
@@ -103,19 +102,15 @@ public class Gun : MonoBehaviour
             hitPosition =  hit.point;
         }
         else 
-        {
             // ray에 충돌된 물체가 없다면
                 // 탄알이 최대 사거리까지 날라갔음을 가시적으로 표현
             hitPosition = fire_Tr.position + fire_Tr.forward * distance; // 현재 위치 + 현재 방향 * 최대 사거리
-        }
 
         // Effect 표현
         StartCoroutine(ShotEffect(hitPosition));
-
-        if (--MagAmmo <= 0)
-        {
-            state = State.Empty;
-        }
+        
+        // 현재 총의 남은 탄이 0 이하일 경우, 총의 상태를 Empty로 변경
+        if (--MagAmmo <= 0) state = State.Empty;
     }
 
     private IEnumerator ShotEffect(Vector3 point)
@@ -137,7 +132,9 @@ public class Gun : MonoBehaviour
 
         line.enabled = false;
     }
+    #endregion
 
+    #region Reloading
     public bool Reload()
     {
         // 현재 재장전이 필요한지를 return할 Method
@@ -145,10 +142,8 @@ public class Gun : MonoBehaviour
         // 이미 재장전 중이거나
         // 총알이 없거나
         // 탄창이 이미 총알이 가득하거나
-        if (state.Equals(State.Reloading) || ammoRemain <= 0 || MagAmmo >= gunData.MAGCapacity)
-        {
-            return false;
-        }
+        if (state.Equals(State.Reloading) || ammoRemain <= 0 || MagAmmo >= gunData.MAGCapacity) return false;
+
         StartCoroutine(Reload_co());
         return true;
     }
@@ -161,14 +156,12 @@ public class Gun : MonoBehaviour
         // 재장전 후에 계산
         int ammofill = gunData.MAGCapacity - MagAmmo;
         // 탄창에 채워야 할 탄약이 남은 탄약보다 많다면
-        if (ammoRemain < ammofill)
-        {
-            ammofill = ammoRemain;
-        }
-        Debug.Log($"{ammofill}");
+        if (ammoRemain < ammofill) ammofill = ammoRemain;
+
         // 탄창을 채우고 전체 탄창 수를 줄인다.
         MagAmmo += ammofill;
         ammoRemain -= ammofill;
         state = State.Ready;
     }
+    #endregion
 }

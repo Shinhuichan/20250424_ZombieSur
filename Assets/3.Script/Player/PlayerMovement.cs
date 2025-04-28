@@ -55,8 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        Vector3 moveDirection =
-                            player_Input.Move_Value * transform.forward * moveSpeed * Time.deltaTime;
+        Vector3 moveDirection = player_Input.Move_Value * transform.forward * moveSpeed * Time.deltaTime;
 
         player_r.MovePosition(player_r.position + moveDirection);
     }
@@ -67,18 +66,17 @@ public class PlayerMovement : MonoBehaviour
         // player_r.rotation =
         //                 player_r.rotation * Quaternion.Euler(0, turn, 0);
 
-        // 1. Rotate Speed 데이터를 사용하지 않고 캐릭터가 마우스 커서를 바로 바라보게 설정
-        /*
-        Vector3 mouse_pos = Input.mousePosition;
-        Ray ray = cam.ScreenPointToRay(mouse_pos);
-        if (Physics.Raycast(ray, out var hit, 100f))
-        {
-            mouse_pos = hit.point;
-            mouse_pos.y = transform.position.y;
+        // // 1. Rotate Speed 데이터를 사용하지 않고 캐릭터가 마우스 커서를 바로 바라보게 설정
+        
+        // Vector3 mouse_pos = Input.mousePosition;
+        // Ray ray = cam.ScreenPointToRay(mouse_pos);
+        // if (Physics.Raycast(ray, out var hit, 100f))
+        // {
+        //     mouse_pos = hit.point;
+        //     mouse_pos.y = transform.position.y;
 
-            transform.LookAt(mouse_pos);
-        }
-        */
+        //     transform.LookAt(mouse_pos);
+        // }
     }
 
     private void RotateMouse()

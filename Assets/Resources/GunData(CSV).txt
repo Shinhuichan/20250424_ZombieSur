@@ -1,5 +1,0 @@
-Name,Damage,TimeBetFire,reloadTime,MagCapacity,StartAmmo,ShotclipName,reloadClipName
-UZI,25,0.1 ,1.8 ,30,100,Gun Shoot,Gun Reload
-M16,40,0.2 ,2.5 ,40,100,Gun Shoot,Gun Reload
-AK47,50,0.2 ,2.7 ,40,100,Gun Shoot,Gun Reload
-GLOCK19,20,0.5 ,1.0 ,7,100,Gun Shoot,Gun Reload

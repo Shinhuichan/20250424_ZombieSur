@@ -15,13 +15,13 @@ public class GunData : ScriptableObject
 
     */
 
-    public float damage = 25f; // ���ݷ�
+    public float damage = 25f; // 총의 공격력
 
-    public float timeBetFire = 0.12f; // �����
-    public float reloadTime = 1.8f; // ������ �ð�
+    public float timeBetFire = 0.12f; // 연사 속도
+    public float reloadTime = 1.8f; // 재장전 시간
 
-    public int MAGCapacity = 30;
-    public int startAmmoRemain = 100;
+    public int MAGCapacity = 30; // 총의 탄창 크기
+    public int startAmmoRemain = 100; // 게임 시작 시, 주어지는 탄의 총량
 
     public AudioClip shot_Clip;
     public AudioClip reload_Clip;
