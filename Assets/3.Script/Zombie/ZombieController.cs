@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.AI;
@@ -27,10 +28,13 @@ public class ZombieController : LivingEntity
     [SerializeField] private float timeBetAttack = 0.5f;
     private float lastAttackTimeBet;
 
+    [Header("Dropped Item")]
+    [SerializeField] private List<GameObject> itemPrefabs = new List<GameObject>();
+
     // 추적할 만한 target을 찾았는 지 유무를 확인하는 Bool 데이터
     private bool isTarget
     {
-        get 
+        get
         {
             // Target이 존재하며 && Target이 생존해있을 경우 true를 반환
             if (targetEntity != null && targetEntity.isLive)

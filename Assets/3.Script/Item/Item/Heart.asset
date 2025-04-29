@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heart
   m_EditorClassIdentifier: 
   itemName: Heart
-  gainHealth: 10
+  gainHealth: 15
   gainScore: 0
   gainAmmo: 0
   prefab: {fileID: 974872754278773360, guid: 5fa87ffa1bf6553458b2cc46fe7918bd, type: 3}

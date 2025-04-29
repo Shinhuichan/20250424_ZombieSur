@@ -13,6 +13,16 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    // private static UIManager Instance
+    // {
+    //     get 
+    //     {
+    //         if (instance == null)
+    //             instance = FindAnyObjectByType<UIManager>();
+    //         return instance; 
+    //     }
+    // }
+
     /* 
         탄약 표시 텍스트
         점수 표시 텍스트
@@ -60,5 +70,6 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         SetActive_GameOver(false);
         GameManager.instance.SetGame(false);
+        GameManager.instance.EndGame();
     }
 }

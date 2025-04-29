@@ -42,7 +42,7 @@ public class LivingEntity : MonoBehaviour, IDamage // 다중 상속(Interface)
     // Character가 damage를 받았을 때, health가 감소되고 0 이하가 되었을 때, 죽는 메서드를 실행하는 메서드
     public virtual void OnDamage(float damage, Vector3 hitPosition, Vector3 hitNormal)
     {
-        Debug.Log(health);
+        // Debug.Log(health);
         health -= damage;
         
         // 살았는지... 죽었는지...

@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Ammo
   gainHealth: 0
   gainScore: 0
-  gainAmmo: 10
+  gainAmmo: 20
   prefab: {fileID: 1037057067902337213, guid: e6d85bfc2c9ac914292a67d0c292ef72, type: 3}

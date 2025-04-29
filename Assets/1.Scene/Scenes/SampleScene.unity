@@ -803,6 +803,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd152cf0905591d4ba781252dc1ce7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 8386329091911201384}
+  itemList:
+  - {fileID: 974872754278773360, guid: 5fa87ffa1bf6553458b2cc46fe7918bd, type: 3}
+  - {fileID: 1037057067902337213, guid: e6d85bfc2c9ac914292a67d0c292ef72, type: 3}
+  - {fileID: 3283437990319575896, guid: 10c99e2c1c5d9da4a9a2fc095bc484cb, type: 3}
+  spawnRange: 3
+  spawnInterval: 5
 --- !u!4 &897931728
 Transform:
   m_ObjectHideFlags: 0
@@ -811,12 +818,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897931726}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 8386329091903774082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &903318167
 GameObject:
@@ -28864,6 +28871,7 @@ Transform:
   - {fileID: 8386329091903774182}
   - {fileID: 903318168}
   - {fileID: 1705425750}
+  - {fileID: 897931728}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8386329091903774182
@@ -28915,6 +28923,7 @@ GameObject:
   - component: {fileID: 8386329091911201382}
   - component: {fileID: 8386329091911201383}
   - component: {fileID: 8386329091911201384}
+  - component: {fileID: 8386329091911201386}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -29207,6 +29216,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8386329091911201386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8386329091903930786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f79494b08cf7240ba2c7dd393ce927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 5974574463104214757}
+  playerHealth: {fileID: 8386329091911201384}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -29220,4 +29243,3 @@ SceneRoots:
   - {fileID: 1015186184}
   - {fileID: 1968551949}
   - {fileID: 771228987}
-  - {fileID: 897931728}

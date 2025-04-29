@@ -77,6 +77,6 @@ public class ZombieSpawner : MonoBehaviour
         // ( 매개 변수 ) => { 구현 부분 }
         z.onDead += () => {zombieList.Remove(z);};
         z.onDead += () => {Destroy(z.gameObject, 10f);};
-        z.onDead += () => {GameManager.instance.AddScore();};
+        z.onDead += () => {GameManager.instance.SetScore();};
     }
 }

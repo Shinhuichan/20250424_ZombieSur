@@ -63,9 +63,12 @@ public class PlayerHealth : LivingEntity
         animator.SetTrigger("Die");
         aud.PlayOneShot(deathClip);
         
-        // 죽었을 때, COmponent 비활성화
+        // 죽었을 때, Component 비활성화
         playerMovement.enabled = false;
         playerShooter.enabled = false;
+
+        GameManager.instance.SetGame(true);
+        UIManager.instance.SetActive_GameOver(true);
     }
     public void Healing(float gainHealth)
     {
@@ -73,5 +76,6 @@ public class PlayerHealth : LivingEntity
             health = maxHealth;
         else
             health += gainHealth;
+        healthSlider.value = health;
     }
 }
